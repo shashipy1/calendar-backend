@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 8000;
 var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const userRouter = require('./src/Routes/userRouter');
+const eventsRouters = require('./src/Routes/eventsRouter');
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +17,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use('/users', userRouter);
+app.use('/events', eventsRouters);
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
